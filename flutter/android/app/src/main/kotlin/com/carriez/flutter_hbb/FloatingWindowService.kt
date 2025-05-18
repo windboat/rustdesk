@@ -28,6 +28,7 @@ import android.widget.PopupMenu
 import com.caverock.androidsvg.SVG
 import ffi.FFI
 import kotlin.math.abs
+import com.windboat.flutter_hbb.R;
 
 class FloatingWindowService : Service(), View.OnTouchListener {
 
