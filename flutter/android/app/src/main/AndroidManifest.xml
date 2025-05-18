@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.carriez.flutter_hbb">
+    package="com.windboat.flutter_hbb">
 
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -30,7 +30,7 @@
         android:supportsRtl="true">
 
         <receiver
-            android:name=".BootReceiver"
+            android:name="com.carriez.flutter_hbb.BootReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter android:priority="1000">
@@ -42,7 +42,7 @@
         </receiver>
 
         <service
-            android:name=".InputService"
+            android:name="com.carriez.flutter_hbb.InputService"
             android:enabled="true"
             android:exported="false"
             android:label="RustDesk Input"
@@ -57,7 +57,7 @@
         </service>
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.carriez.flutter_hbb.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode|navigation"
             android:exported="true"
             android:hardwareAccelerated="true"
@@ -80,17 +80,17 @@
         </activity>
 
         <activity
-            android:name=".PermissionRequestTransparentActivity"
+            android:name="com.carriez.flutter_hbb.PermissionRequestTransparentActivity"
             android:excludeFromRecents="true"
             android:theme="@style/Transparent" />
 
         <service
-            android:name=".MainService"
+            android:name="com.carriez.flutter_hbb.MainService"
             android:enabled="true"
             android:foregroundServiceType="mediaProjection" />
 
         <service
-            android:name=".FloatingWindowService"
+            android:name="com.carriez.flutter_hbb.FloatingWindowService"
             android:enabled="true" />
 
         <!--
