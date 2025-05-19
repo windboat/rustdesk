@@ -971,18 +971,20 @@ jobs:
 
       - name: Set ANDROID_SIGNING_KEY environment variable 1
         run: |
-          if [ -z "${{ secrets.ANDROID_SIGNING_KEY }}" ]; then
-            echo "ANDROID_SIGNING_KEY is empty"
+          if [ ${{ secrets.ANDROID_SIGNING_KEY != '' }} ]; then
+            echo "secrets.ANDROID_SIGNING_KEY is empty"
           else
-            echo "ANDROID_SIGNING_KEY is set"
+            echo "secrets.ANDROID_SIGNING_KEY is set"
           fi
   
       - name: Set ANDROID_SIGNING_KEY environment variable  2
+        env:
+          ANDROID_SIGNING_KEY: "${{ secrets.ANDROID_SIGNING_KEY }}"
         run: |
           if [ -z "$ANDROID_SIGNING_KEY" ]; then
-            echo "ANDROID_SIGNING_KEY is empty"
+            echo "env.ANDROID_SIGNING_KEY is empty"
           else
-            echo "ANDROID_SIGNING_KEY is set"
+            echo "env.ANDROID_SIGNING_KEY is set"
           fi
 
       - name: Install dependencies
