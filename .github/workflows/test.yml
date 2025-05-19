@@ -1,0 +1,16 @@
+name: Check ANDROID_SIGNING_KEY
+
+on: [push]
+
+jobs:
+  check-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if ANDROID_SIGNING_KEY is set
+        run: |
+          if [ -z "${{ secrets.ANDROID_SIGNING_KEY }}" ]; then
+            echo "ANDROID_SIGNING_KEY is not set."
+            exit 1
+          else
+            echo "ANDROID_SIGNING_KEY is set."
+          fi
