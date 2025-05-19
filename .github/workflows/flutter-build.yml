@@ -979,7 +979,7 @@ jobs:
   
       - name: Set ANDROID_SIGNING_KEY environment variable  2
         env:
-          ANDROID_SIGNING_KEY: "${{ secrets.ANDROID_SIGNING_KEY }}"
+          ANDROID_SIGNING_KEY: "test"
         run: |
           if [ -z "$ANDROID_SIGNING_KEY" ]; then
             echo "env.ANDROID_SIGNING_KEY is empty"
