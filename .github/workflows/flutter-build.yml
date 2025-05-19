@@ -1006,14 +1006,20 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Set ANDROID_SIGNING_KEY environment variable
+      - name: Set ANDROID_SIGNING_KEY environment variable 1
+        run: |
+          if [ -z "${{ secrets.ANDROID_SIGNING_KEY }}" ]; then
+            echo "ANDROID_SIGNING_KEY is empty"
+          else
+            echo "ANDROID_SIGNING_KEY is set"
+          fi
+  
+      - name: Set ANDROID_SIGNING_KEY environment variable  2
         run: |
           if [ -z "$ANDROID_SIGNING_KEY" ]; then
             echo "ANDROID_SIGNING_KEY is empty"
-            echo "HAS_SIGNING_KEY=false" >> $GITHUB_ENV
           else
             echo "ANDROID_SIGNING_KEY is set"
-            echo "HAS_SIGNING_KEY=true" >> $GITHUB_ENV
           fi
 
       - name: Install flutter
