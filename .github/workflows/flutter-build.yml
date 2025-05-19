@@ -965,6 +965,7 @@ jobs:
           script: |
             core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
             core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+            core.exportVariable('ANDROID_SIGNING_KEY', process.env.ANDROID_SIGNING_KEY || '');
 
       - name: Install dependencies
         run: |
