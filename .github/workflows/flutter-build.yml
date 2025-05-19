@@ -1006,6 +1006,16 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Set ANDROID_SIGNING_KEY environment variable
+        run: |
+          if [ -z "$ANDROID_SIGNING_KEY" ]; then
+            echo "ANDROID_SIGNING_KEY is empty"
+            echo "HAS_SIGNING_KEY=false" >> $GITHUB_ENV
+          else
+            echo "ANDROID_SIGNING_KEY is set"
+            echo "HAS_SIGNING_KEY=true" >> $GITHUB_ENV
+          fi
+
       - name: Install flutter
         uses: subosito/flutter-action@v2
         with:
