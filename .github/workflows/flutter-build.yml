@@ -950,7 +950,7 @@ jobs:
     steps:
       - name: Set ANDROID_SIGNING_KEY environment variable 1
         run: |
-          if [ ${{ secrets.ANDROID_SIGNING_KEY != '' }} ]; then
+          if [ -z "${{ secrets.ANDROID_SIGNING_KEY }}" ]; then
             echo "secrets.ANDROID_SIGNING_KEY is empty"
           else
             echo "secrets.ANDROID_SIGNING_KEY is set"
@@ -989,7 +989,7 @@ jobs:
 
       - name: Set ANDROID_SIGNING_KEY environment variable 3
         run: |
-          if [ -z "${{ secrets.ANDROID_SIGNING_KEY }}'' ]; then
+          if [ -z "${{ secrets.ANDROID_SIGNING_KEY }}" ]; then
             echo "secrets.ANDROID_SIGNING_KEY is empty"
           else
             echo "secrets.ANDROID_SIGNING_KEY is set"
