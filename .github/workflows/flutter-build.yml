@@ -948,6 +948,24 @@ jobs:
               suffix: "",
             }
     steps:
+      - name: Set ANDROID_SIGNING_KEY environment variable 1
+        run: |
+          if [ ${{ secrets.ANDROID_SIGNING_KEY != '' }} ]; then
+            echo "secrets.ANDROID_SIGNING_KEY is empty"
+          else
+            echo "secrets.ANDROID_SIGNING_KEY is set"
+          fi
+  
+      - name: Set ANDROID_SIGNING_KEY environment variable  2
+        env:
+          ANDROID_SIGNING_KEY: "${{ secrets.ANDROID_SIGNING_KEY }}"
+        run: |
+          if [ -z "$ANDROID_SIGNING_KEY" ]; then
+            echo "env.ANDROID_SIGNING_KEY is empty"
+          else
+            echo "env.ANDROID_SIGNING_KEY is set"
+          fi
+          
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
@@ -969,15 +987,15 @@ jobs:
             core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
             core.exportVariable('ANDROID_SIGNING_KEY', process.env.ANDROID_SIGNING_KEY || '');
 
-      - name: Set ANDROID_SIGNING_KEY environment variable 1
+      - name: Set ANDROID_SIGNING_KEY environment variable 3
         run: |
-          if [ ${{ secrets.ANDROID_SIGNING_KEY != '' }} ]; then
+          if [ -z "${{ secrets.ANDROID_SIGNING_KEY }}'' ]; then
             echo "secrets.ANDROID_SIGNING_KEY is empty"
           else
             echo "secrets.ANDROID_SIGNING_KEY is set"
           fi
   
-      - name: Set ANDROID_SIGNING_KEY environment variable  2
+      - name: Set ANDROID_SIGNING_KEY environment variable  4
         env:
           ANDROID_SIGNING_KEY: "test"
         run: |
